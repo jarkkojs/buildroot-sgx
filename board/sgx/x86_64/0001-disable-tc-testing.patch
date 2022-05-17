@@ -1,0 +1,25 @@
+From 3d752130aa1ca14fa0adcd2bf7cef214dcf76045 Mon Sep 17 00:00:00 2001
+From: Jarkko Sakkinen <jarkko@kernel.org>
+Date: Mon, 16 May 2022 11:20:40 +0300
+Subject: [PATCH] selftests: remove tc-testing from targets
+
+Signed-off-by: Jarkko Sakkinen <jarkko@kernel.org>
+---
+ tools/testing/selftests/Makefile | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tools/testing/selftests/Makefile b/tools/testing/selftests/Makefile
+index 2319ec87f53d..ed279a3fa229 100644
+--- a/tools/testing/selftests/Makefile
++++ b/tools/testing/selftests/Makefile
+@@ -65,7 +65,6 @@ TARGETS += static_keys
+ TARGETS += sync
+ TARGETS += syscall_user_dispatch
+ TARGETS += sysctl
+-TARGETS += tc-testing
+ TARGETS += timens
+ ifneq (1, $(quicktest))
+ TARGETS += timers
+-- 
+2.36.1
+
