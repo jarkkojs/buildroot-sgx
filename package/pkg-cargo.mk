@@ -21,7 +21,7 @@
 ################################################################################
 
 PKG_COMMON_CARGO_ENV = \
-	CARGO_HOME=$(HOST_DIR)/share/cargo
+	CARGO_HOME=$(HOME)/.cargo
 
 # __CARGO_TEST_CHANNEL_OVERRIDE_DO_NOT_USE_THIS is needed to allow
 # passing the -Z target-applies-to-host, which is needed together with
@@ -117,7 +117,7 @@ define $(2)_BUILD_CMDS
 		$$(TARGET_CONFIGURE_OPTS) \
 		$$(PKG_CARGO_ENV) \
 		$$($(2)_CARGO_ENV) \
-		cargo build \
+		$(CARGO_HOME)/bin/cargo build \
 			--offline \
 			$$(if $$(BR2_ENABLE_DEBUG),,--release) \
 			--manifest-path Cargo.toml \
@@ -132,7 +132,7 @@ define $(2)_BUILD_CMDS
 		$$(HOST_CONFIGURE_OPTS) \
 		$$(HOST_PKG_CARGO_ENV) \
 		$$($(2)_CARGO_ENV) \
-		cargo build \
+		$(CARGO_HOME)/bin/cargo build \
 			--offline \
 			--release \
 			--manifest-path Cargo.toml \
@@ -153,7 +153,7 @@ define $(2)_INSTALL_TARGET_CMDS
 		$$(TARGET_CONFIGURE_OPTS) \
 		$$(PKG_CARGO_ENV) \
 		$$($(2)_CARGO_ENV) \
-		cargo install \
+		$(CARGO_HOME)/bin/cargo install \
 			--offline \
 			--root $$(TARGET_DIR)/usr/ \
 			--bins \
@@ -173,7 +173,7 @@ define $(2)_INSTALL_CMDS
 		$$(HOST_CONFIGURE_OPTS) \
 		$$(HOST_PKG_CARGO_ENV) \
 		$$($(2)_CARGO_ENV) \
-		cargo install \
+		$(CARGO_HOME)/bin/cargo install \
 			--offline \
 			--root $$(HOST_DIR) \
 			--bins \

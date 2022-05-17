@@ -1,0 +1,9 @@
+config BR2_PACKAGE_ENARX
+	bool "enarx"
+	depends on BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS
+	select BR2_PACKAGE_HOST_RUSTC
+	help
+	  Application deployment system enabling applications to run within
+	  Trusted Execution Environments (TEEs
+
+	  https://github.com/enarx/enarx
