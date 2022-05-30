@@ -162,6 +162,10 @@ config BR2_PACKAGE_HOST_RUST_BIN
 	  This package will install pre-built versions of the compiler
 	  for the host and the Rust standard library for the target.
 
+config BR2_PACKAGE_HOST_RUSTC_NIGHTLY
+	bool "host rust (nightly)"
+	select BR2_PACKAGE_HOST_RUST
+
 endchoice
 
 endif
