@@ -1,0 +1,36 @@
+From ee444d43531dfd463732dc934716e9798e75cbce Mon Sep 17 00:00:00 2001
+From: Jarkko Sakkinen <jarkko@profian.com>
+Date: Mon, 16 May 2022 11:16:35 +0300
+Subject: [PATCH] build: remove incompatible flags
+
+Signed-off-by: Jarkko Sakkinen <jarkko@profian.com>
+---
+ crates/shim-kvm/build.rs | 2 --
+ crates/shim-sgx/build.rs | 2 --
+ 2 files changed, 4 deletions(-)
+
+diff --git a/crates/shim-kvm/build.rs b/crates/shim-kvm/build.rs
+index 6cfbd707..47aa7799 100644
+--- a/crates/shim-kvm/build.rs
++++ b/crates/shim-kvm/build.rs
+@@ -5,6 +5,4 @@ fn main() {
+         "cargo:rustc-link-arg-bin=enarx-shim-kvm=-T{}/layout.ld",
+         std::env::var("CARGO_MANIFEST_DIR").unwrap()
+     );
+-    println!("cargo:rustc-link-arg-bin=enarx-shim-kvm=-Wl,--sort-section=alignment");
+-    println!("cargo:rustc-link-arg-bin=enarx-shim-kvm=-nostartfiles");
+ }
+diff --git a/crates/shim-sgx/build.rs b/crates/shim-sgx/build.rs
+index efe9d836..239262f2 100644
+--- a/crates/shim-sgx/build.rs
++++ b/crates/shim-sgx/build.rs
+@@ -5,6 +5,4 @@ fn main() {
+         "cargo:rustc-link-arg-bin=enarx-shim-sgx=-T{}/layout.ld",
+         std::env::var("CARGO_MANIFEST_DIR").unwrap()
+     );
+-    println!("cargo:rustc-link-arg-bin=enarx-shim-sgx=-Wl,--sort-section=alignment");
+-    println!("cargo:rustc-link-arg-bin=enarx-shim-sgx=-nostartfiles");
+ }
+-- 
+2.36.1
+
